@@ -1,7 +1,7 @@
 // Layout principal: sidebar colapsable + header con selector de año.
 import { Link, Outlet, useRouterState } from "@tanstack/react-router";
 import {
-  Activity,
+  
   BarChart3,
   Brain,
   ChevronLeft,
