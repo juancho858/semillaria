@@ -14,7 +14,7 @@ import {
   YAxis,
 } from "recharts";
 import { Activity, Layers, MapPin, Sprout } from "lucide-react";
-import { cn } from "@/lib/utils";
+
 import { REGISTROS } from "@/data/dataset";
 import { SUBREGIONES } from "@/data/types";
 import type { Registro } from "@/data/types";
