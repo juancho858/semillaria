@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap");
 @import "tailwindcss" source(none);
 @source "../src";
 @import "tw-animate-css";
@@ -7,15 +7,14 @@
 
 /* ──────────────────────────────────────────────────────────────
    SEMILLARIA — Observatorio Agrícola de Antioquia
-   Sistema de diseño institucional sobrio
-   Fuentes: IBM Plex Sans (cuerpo) + IBM Plex Mono (datos)
+   Sistema de diseño premium SaaS · paleta tierra + teal
+   Display: Instrument Serif (hero) · UI: Inter · Datos: JetBrains Mono
    ────────────────────────────────────────────────────────────── */
 
-
-
 @theme inline {
-  --font-sans: "IBM Plex Sans", system-ui, sans-serif;
-  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --font-display: "Instrument Serif", "Times New Roman", serif;
 
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -30,6 +29,7 @@
   --color-popover-foreground: var(--popover-foreground);
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
+  --color-primary-glow: var(--primary-glow);
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
   --color-muted: var(--muted);
@@ -61,62 +61,72 @@
 }
 
 :root {
-  --radius: 0.5rem;
+  --radius: 0.875rem;
 
-  /* Paleta oficial Semillaria
-     #32A199 teal  · #481E03 marrón profundo · #A48F81 taupe
-     #EEEAE7 fondo · #FFFFFF cards */
-
-  --background: #EEEAE7;
-  --foreground: #481E03;
+  /* Paleta — base de la imagen + acento ámbar */
+  --background: #F5F1EC;          /* beige cálido más suave */
+  --foreground: #2A1404;          /* marrón profundo casi negro */
 
   --surface: #FFFFFF;
-  --surface-elevated: #FFFFFF;
+  --surface-elevated: #FBF8F4;
   --card: #FFFFFF;
-  --card-foreground: #481E03;
+  --card-foreground: #2A1404;
   --popover: #FFFFFF;
-  --popover-foreground: #481E03;
+  --popover-foreground: #2A1404;
 
-  /* Primario teal institucional */
-  --primary: #32A199;
+  /* Teal institucional + glow */
+  --primary: #2A8C84;
   --primary-foreground: #FFFFFF;
+  --primary-glow: #4DBDB4;
 
-  /* Secundario marrón profundo */
-  --secondary: #481E03;
-  --secondary-foreground: #FFFFFF;
+  --secondary: #3A1A06;
+  --secondary-foreground: #FBF8F4;
 
-  --muted: #EEEAE7;
-  --muted-foreground: #A48F81;
-  --accent: #32A199;
-  --accent-foreground: #FFFFFF;
+  --muted: #ECE5DC;
+  --muted-foreground: #8A7563;
 
-  --destructive: oklch(0.62 0.21 25);
+  /* Acento ámbar suave (warm) */
+  --accent: #D88A4A;
+  --accent-foreground: #2A1404;
+
+  --destructive: oklch(0.58 0.21 25);
   --destructive-foreground: #FFFFFF;
 
-  --border: #A48F81;
-  --input: #A48F81;
-  --ring: #32A199;
+  --border: #E2D9CC;
+  --input: #E2D9CC;
+  --ring: #2A8C84;
 
-  /* Escala de calor del mapa (claro → teal) */
-  --heat-min: #EEEAE7;
-  --heat-max: #32A199;
+  --heat-min: #F5F1EC;
+  --heat-max: #2A8C84;
 
-  /* Recharts */
-  --chart-1: #32A199;
-  --chart-2: #481E03;
-  --chart-3: #A48F81;
-  --chart-4: #6FC3BC;
-  --chart-5: #8A4A1C;
+  /* Recharts — paleta cohesiva */
+  --chart-1: #2A8C84;
+  --chart-2: #D88A4A;
+  --chart-3: #6B3A1C;
+  --chart-4: #4DBDB4;
+  --chart-5: #A48F81;
 
-  /* Sidebar / barra de menú en teal */
-  --sidebar: #32A199;
-  --sidebar-foreground: #FFFFFF;
-  --sidebar-primary: #FFFFFF;
-  --sidebar-primary-foreground: #32A199;
-  --sidebar-accent: #2A8A83;
+  /* Sidebar — verde profundo de la imagen */
+  --sidebar: #1F4E47;
+  --sidebar-foreground: #E8F0EE;
+  --sidebar-primary: #4DBDB4;
+  --sidebar-primary-foreground: #1F4E47;
+  --sidebar-accent: #2A6A60;
   --sidebar-accent-foreground: #FFFFFF;
-  --sidebar-border: #2A8A83;
-  --sidebar-ring: #FFFFFF;
+  --sidebar-border: #2A6A60;
+  --sidebar-ring: #4DBDB4;
+
+  /* Gradientes + sombras (sistema de elevación) */
+  --gradient-primary: linear-gradient(135deg, #2A8C84 0%, #4DBDB4 100%);
+  --gradient-warm: linear-gradient(135deg, #D88A4A 0%, #E8A968 100%);
+  --gradient-hero: linear-gradient(135deg, #1F4E47 0%, #2A8C84 60%, #4DBDB4 100%);
+  --gradient-surface: linear-gradient(180deg, #FFFFFF 0%, #FBF8F4 100%);
+
+  --shadow-xs: 0 1px 2px 0 rgba(42, 20, 4, 0.04);
+  --shadow-sm: 0 2px 4px -1px rgba(42, 20, 4, 0.06), 0 1px 2px -1px rgba(42, 20, 4, 0.04);
+  --shadow-md: 0 8px 24px -6px rgba(42, 20, 4, 0.08), 0 2px 6px -2px rgba(42, 20, 4, 0.04);
+  --shadow-lg: 0 20px 48px -12px rgba(42, 20, 4, 0.14), 0 4px 12px -4px rgba(42, 20, 4, 0.06);
+  --shadow-glow: 0 0 0 1px rgba(42, 140, 132, 0.18), 0 8px 32px -8px rgba(42, 140, 132, 0.35);
 }
 
 @layer base {
@@ -133,23 +143,54 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
-  /* Números siempre en mono para precisión */
   .num, [data-num] {
     font-family: var(--font-mono);
     font-feature-settings: "tnum";
+    letter-spacing: -0.01em;
   }
 
-  /* Transiciones globales suaves */
-  .card-hover {
-    transition: transform 150ms ease, border-color 150ms ease, background-color 150ms ease;
+  .font-display {
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: -0.015em;
   }
-  .card-hover:hover {
-    border-color: color-mix(in oklch, var(--color-primary) 60%, transparent);
-  }
+}
 
-  /* Scrollbar discreto */
+@utility card-elevated {
+  background: var(--gradient-surface);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+  transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 200ms cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 200ms ease;
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+    border-color: color-mix(in oklch, var(--color-primary) 35%, var(--color-border));
+  }
+}
+
+@utility shadow-elev-sm { box-shadow: var(--shadow-sm); }
+@utility shadow-elev-md { box-shadow: var(--shadow-md); }
+@utility shadow-elev-lg { box-shadow: var(--shadow-lg); }
+@utility shadow-glow { box-shadow: var(--shadow-glow); }
+
+@utility bg-gradient-primary { background: var(--gradient-primary); }
+@utility bg-gradient-warm { background: var(--gradient-warm); }
+@utility bg-gradient-hero { background: var(--gradient-hero); }
+
+@utility animate-fade-up {
+  animation: fadeUp 500ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@layer base {
   ::-webkit-scrollbar { width: 10px; height: 10px; }
-  ::-webkit-scrollbar-track { background: var(--color-background); }
+  ::-webkit-scrollbar-track { background: transparent; }
   ::-webkit-scrollbar-thumb { background: var(--color-border); border-radius: 8px; }
   ::-webkit-scrollbar-thumb:hover { background: var(--color-muted-foreground); }
 }
