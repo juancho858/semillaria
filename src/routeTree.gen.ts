@@ -11,7 +11,6 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as PrediccionesRouteImport } from './routes/predicciones'
 import { Route as MapaRouteImport } from './routes/mapa'
-import { Route as DiagnosticoRouteImport } from './routes/diagnostico'
 import { Route as AnalizadorRouteImport } from './routes/analizador'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ApiAnalizadorRouteImport } from './routes/api/analizador'
@@ -24,11 +23,6 @@ const PrediccionesRoute = PrediccionesRouteImport.update({
 const MapaRoute = MapaRouteImport.update({
   id: '/mapa',
   path: '/mapa',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const DiagnosticoRoute = DiagnosticoRouteImport.update({
-  id: '/diagnostico',
-  path: '/diagnostico',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AnalizadorRoute = AnalizadorRouteImport.update({
@@ -50,7 +44,6 @@ const ApiAnalizadorRoute = ApiAnalizadorRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/analizador': typeof AnalizadorRoute
-  '/diagnostico': typeof DiagnosticoRoute
   '/mapa': typeof MapaRoute
   '/predicciones': typeof PrediccionesRoute
   '/api/analizador': typeof ApiAnalizadorRoute
@@ -58,7 +51,6 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/analizador': typeof AnalizadorRoute
-  '/diagnostico': typeof DiagnosticoRoute
   '/mapa': typeof MapaRoute
   '/predicciones': typeof PrediccionesRoute
   '/api/analizador': typeof ApiAnalizadorRoute
@@ -67,33 +59,19 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/analizador': typeof AnalizadorRoute
-  '/diagnostico': typeof DiagnosticoRoute
   '/mapa': typeof MapaRoute
   '/predicciones': typeof PrediccionesRoute
   '/api/analizador': typeof ApiAnalizadorRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths:
-    | '/'
-    | '/analizador'
-    | '/diagnostico'
-    | '/mapa'
-    | '/predicciones'
-    | '/api/analizador'
+  fullPaths: '/' | '/analizador' | '/mapa' | '/predicciones' | '/api/analizador'
   fileRoutesByTo: FileRoutesByTo
-  to:
-    | '/'
-    | '/analizador'
-    | '/diagnostico'
-    | '/mapa'
-    | '/predicciones'
-    | '/api/analizador'
+  to: '/' | '/analizador' | '/mapa' | '/predicciones' | '/api/analizador'
   id:
     | '__root__'
     | '/'
     | '/analizador'
-    | '/diagnostico'
     | '/mapa'
     | '/predicciones'
     | '/api/analizador'
@@ -102,7 +80,6 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AnalizadorRoute: typeof AnalizadorRoute
-  DiagnosticoRoute: typeof DiagnosticoRoute
   MapaRoute: typeof MapaRoute
   PrediccionesRoute: typeof PrediccionesRoute
   ApiAnalizadorRoute: typeof ApiAnalizadorRoute
@@ -122,13 +99,6 @@ declare module '@tanstack/react-router' {
       path: '/mapa'
       fullPath: '/mapa'
       preLoaderRoute: typeof MapaRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/diagnostico': {
-      id: '/diagnostico'
-      path: '/diagnostico'
-      fullPath: '/diagnostico'
-      preLoaderRoute: typeof DiagnosticoRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/analizador': {
@@ -158,7 +128,6 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AnalizadorRoute: AnalizadorRoute,
-  DiagnosticoRoute: DiagnosticoRoute,
   MapaRoute: MapaRoute,
   PrediccionesRoute: PrediccionesRoute,
   ApiAnalizadorRoute: ApiAnalizadorRoute,
@@ -166,3 +135,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
