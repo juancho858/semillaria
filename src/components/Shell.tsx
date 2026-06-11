@@ -1,7 +1,7 @@
 // Layout principal: sidebar colapsable + header con selector de año.
 import { Link, Outlet, useRouterState } from "@tanstack/react-router";
 import {
-  Activity,
+  
   BarChart3,
   Brain,
   ChevronLeft,
@@ -24,7 +24,6 @@ const NAV: Nav[] = [
   { to: "/mapa", label: "Mapa de Calor", icon: MapIcon },
   { to: "/predicciones", label: "Predicciones", icon: LineChart },
   { to: "/analizador", label: "Analizador IA", icon: Brain },
-  { to: "/diagnostico", label: "Diagnóstico", icon: Activity },
 ];
 
 export function Shell({ children }: { children?: ReactNode }) {
