@@ -1,11 +1,11 @@
 {
+  "version": 1,
   "asset_id": "a10de452-6201-4994-b8f8-c1724849c82c",
-  "content_type": "image/jpeg",
-  "created_at": "2026-06-04T02:39:28Z",
-  "original_filename": "semillaria-logo.jpeg",
-  "project_id": "38b5fea3-bf47-4b29-94c7-bd8a1f0cfea8",
-  "r2_key": "a/v1/38b5fea3-bf47-4b29-94c7-bd8a1f0cfea8/a10de452-6201-4994-b8f8-c1724849c82c/semillaria-logo.jpeg",
-  "size": 238340,
+  "project_id": "5c2bd0f9-4934-4745-abde-21c133b8e6fd",
   "url": "/__l5e/assets-v1/a10de452-6201-4994-b8f8-c1724849c82c/semillaria-logo.jpeg",
-  "version": 1
+  "r2_key": "a/v1/5c2bd0f9-4934-4745-abde-21c133b8e6fd/a10de452-6201-4994-b8f8-c1724849c82c/semillaria-logo.jpeg",
+  "original_filename": "semillaria-logo.jpeg",
+  "size": 238340,
+  "content_type": "image/jpeg",
+  "created_at": "2026-06-04T02:39:28Z"
 }
